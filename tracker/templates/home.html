@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load widget_tweaks %}
+
+{% block title %}Home | Price Tracker{% endblock %}
+
+{% block content %}
+<div class="card shadow-sm">
+    <div class="card-body">
+        <h1 class="h3 mb-4">Price Tracker Filters</h1>
+
+        <form method="get">
+            <div class="row g-3">
+                <div class="col-md-4">
+                    <label for="{{ form.store.id_for_label }}" class="form-label">
+                        Store
+                    </label>
+                    {{ form.store }}
+                    {% if form.store.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ form.store.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-4">
+                    <label for="{{ form.category.id_for_label }}" class="form-label">
+                        Category
+                    </label>
+                    {{ form.category }}
+                    {% if form.category.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ form.category.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+
+                <div class="col-md-4">
+                    <label for="{{ form.product_name.id_for_label }}" class="form-label">
+                        Product Name
+                    </label>
+                    {{ form.product_name }}
+                    {% if form.product_name.errors %}
+                        <div class="text-danger small mt-1">
+                            {{ form.product_name.errors }}
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="mt-4 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">Filter</button>
+                <a href="{% url 'home' %}" class="btn btn-outline-secondary">Clear</a>
+            </div>
+        </form>
+    </div>
+</div>
+{% endblock %}
